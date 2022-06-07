@@ -1,0 +1,87 @@
+opt_in_rules:
+  - unused_declaration
+  - unused_import
+  - vertical_parameter_alignment_on_call
+
+disabled_rules:
+  - force_try
+  - force_cast
+  - nesting
+  - block_based_kvo
+  - opening_brace
+
+excluded:
+  - .build
+  - "**/Package.swift"
+  - "**/Generated"
+
+
+identifier_name:
+  allowed_symbols: 
+    - "_"
+  max_length:
+    warning: 60
+    error: 100
+  min_length:
+    warning: 2
+  excluded:
+    - x
+    - y
+    - z
+
+type_name:
+  allowed_symbols: 
+    - "_"
+  max_length:
+    warning: 60
+    error: 100
+  min_length:
+    warning: 2
+
+function_parameter_count:
+  warning: 6
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+file_length:
+  warning: 2000
+  error: 3000
+
+line_length:
+  warning: 1000
+  error: 2000
+
+type_body_length:
+  warning: 1000
+  error: 1500
+
+function_body_length:
+  warning: 300
+  error: 500
+
+cyclomatic_complexity:
+  warning: 40
+  error: 50
+
+large_tuple:
+  warning: 3
+  error: 6
+
+custom_rules:
+  comment_space:
+    name: "Space After Comment"
+    regex: '//\S'
+    match_kinds:
+      - comment
+    message: "There should be a space after a comment delimiter."
+    severity: warning
+
+  inline_comment_spaces:
+    name: "Spaces Before Inline Comment"
+    regex: '\S ?//'
+    match_kinds:
+      - comment
+    message: "There should be more than 2 spaces before an inline comment."
+    severity: warning
+reporter: "xcode"

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b4X-2g-4z8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BNB/USDT-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Playground" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="ceE-9n-TGu">
+                                <rect key="frame" x="16" y="108" width="382" height="32"/>
+                                <segments>
+                                    <segment title="分时"/>
+                                    <segment title="5 分"/>
+                                    <segment title="1 天"/>
+                                    <segment title="1 周"/>
+                                </segments>
+                                <connections>
+                                    <action selector="timeIntervalChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Q6L-RG-gB7"/>
+                                </connections>
+                            </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="awg-op-JMb">
+                                <rect key="frame" x="16" y="155" width="382" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKq-Hj-SPJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="MA">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RFm-YY-Dgq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CIM-pP-fjK">
+                                        <rect key="frame" x="97.5" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="EMA">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="57X-oe-XF9"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9eu-pL-ZpD">
+                                        <rect key="frame" x="195" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="BOLL">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmb-vj-suB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT8-on-Urc">
+                                        <rect key="frame" x="292.5" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="SAR">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4mC-ua-gAD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="c5M-6a-S3e"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mZ3-0E-D7v">
+                                <rect key="frame" x="16" y="193" width="382" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOL-m9-5HP">
+                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="VOL">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bfm-rV-P67"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JL4-LL-yCD">
+                                        <rect key="frame" x="97.5" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="KDJ">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xtp-WP-HVE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEb-Ea-w22">
+                                        <rect key="frame" x="195" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="RSI">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EMo-XV-XvZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ABt-zQ-vXF">
+                                        <rect key="frame" x="292.5" y="0.0" width="89.5" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="MACD">
+                                            <color key="baseForegroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="chartButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iJ9-1A-Bvd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Eau-HG-4CQ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ceE-9n-TGu" secondAttribute="trailing" constant="16" id="BcK-M6-O08"/>
+                            <constraint firstItem="mZ3-0E-D7v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Bxh-Q9-hxd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="awg-op-JMb" secondAttribute="trailing" constant="16" id="C4Z-wg-3JX"/>
+                            <constraint firstItem="mZ3-0E-D7v" firstAttribute="top" secondItem="CIM-pP-fjK" secondAttribute="bottom" constant="8" id="LtF-5e-101"/>
+                            <constraint firstItem="awg-op-JMb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="YDQ-VI-Im8"/>
+                            <constraint firstItem="ceE-9n-TGu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="ly1-E9-ntC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mZ3-0E-D7v" secondAttribute="trailing" constant="16" id="nWT-Ac-v1i"/>
+                            <constraint firstItem="awg-op-JMb" firstAttribute="top" secondItem="ceE-9n-TGu" secondAttribute="bottom" constant="16" id="rEZ-k6-6DU"/>
+                            <constraint firstItem="ceE-9n-TGu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="spv-IF-Dnl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="BNB/USDT" id="DtR-23-RW7"/>
+                    <connections>
+                        <outlet property="lastStackView" destination="mZ3-0E-D7v" id="aTy-hB-TKx"/>
+                        <outlet property="segmentedControl" destination="ceE-9n-TGu" id="1VV-Tl-bZ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="64.955357142857139"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="31g-dl-6hO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b4X-2g-4z8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rkY-u4-JRc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="kKv-Sb-FuN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mrb-Pt-ZL5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="64.955357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
