@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         }
     }
 
-    private var socket: CodableStream<BNWrapper>?
+    private var socket: CodableWebSocket<BNWrapper>?
 
     private var showMA: Bool = true
 

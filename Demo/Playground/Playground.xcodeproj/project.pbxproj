@@ -12,7 +12,6 @@
 		C202A26927D99B2000210384 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C202A26727D99B2000210384 /* Main.storyboard */; };
 		C202A26B27D99B2100210384 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C202A26A27D99B2100210384 /* Assets.xcassets */; };
 		C202A26E27D99B2100210384 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C202A26C27D99B2100210384 /* LaunchScreen.storyboard */; };
-		C2116B6427E5B62400B49F78 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = C2116B6327E5B62400B49F78 /* Starscream */; };
 		C2116B6727E5B63600B49F78 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2116B6627E5B63600B49F78 /* Websocket.swift */; };
 		C2116B6927E5B9B900B49F78 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2116B6827E5B9B900B49F78 /* Model.swift */; };
 		C21AEDE5283343B3006936CF /* Stockee in Frameworks */ = {isa = PBXBuildFile; productRef = C21AEDE4283343B3006936CF /* Stockee */; };
@@ -38,7 +37,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2116B6427E5B62400B49F78 /* Starscream in Frameworks */,
 				C21AEDE5283343B3006936CF /* Stockee in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,7 +136,6 @@
 			);
 			name = Playground;
 			packageProductDependencies = (
-				C2116B6327E5B62400B49F78 /* Starscream */,
 				C21AEDE4283343B3006936CF /* Stockee */,
 			);
 			productName = Playground;
@@ -170,7 +167,6 @@
 			);
 			mainGroup = C202A25527D99B2000210384;
 			packageReferences = (
-				C2116B6227E5B62400B49F78 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = C202A25F27D99B2000210384 /* Products */;
 			projectDirPath = "";
@@ -471,23 +467,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		C2116B6227E5B62400B49F78 /* XCRemoteSwiftPackageReference "Starscream" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		C2116B6327E5B62400B49F78 /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C2116B6227E5B62400B49F78 /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
-		};
 		C21AEDE4283343B3006936CF /* Stockee */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Stockee;

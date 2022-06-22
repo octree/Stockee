@@ -25,93 +25,44 @@
 //  THE SOFTWARE.
 
 import Foundation
-import Starscream
 
-public enum StreamError: Error {
-    case unkown
-    case disconnected(code: Int, reason: String)
-}
-
-public final class CodableStreamClient<Element: Decodable> {
-    private var socket: WebSocket
-    var isConnected: Bool = false
-    var onReceive: ((Element) -> Void)?
-    var onComplete: (() -> Void)?
-    var onError: ((Error) -> Void)?
+public struct CodableWebSocket<Element: Decodable> {
+    private var request: URLRequest
     public init(request: URLRequest) {
-        socket = WebSocket(request: request)
-        socket.delegate = self
+        self.request = request
     }
 
-    public func connect() {
-        guard !isConnected else { return }
-        socket.connect()
-    }
-
-    public func disconnect() {
-        guard isConnected else { return }
-        socket.disconnect()
-    }
-
-    private func handleData(_ data: Data) {
-        do {
-            try onReceive?(JSONDecoder().decode(Element.self, from: data))
-        } catch {
-            onError?(error)
-            disconnect()
+    var stream: AsyncThrowingStream<Element, Error> {
+        AsyncThrowingStream(Element.self, bufferingPolicy: .bufferingNewest(1)) { continuation in
+            let task = URLSession.shared.webSocketTask(with: request)
+            task.resume()
+            Task.detached {
+                do {
+                    while true {
+                        try await continuation.yield(task.receive().decode(Element.self))
+                    }
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
         }
     }
 }
 
-extension CodableStreamClient: WebSocketDelegate {
-    public func didReceive(event: WebSocketEvent, client: WebSocket) {
-        switch event {
-        case let .connected(headers):
-            isConnected = true
-            print("websocket is connected: \(headers)")
-        case let .disconnected(reason, code):
-            isConnected = false
-            print("websocket is disconnected: \(reason) with code: \(code)")
-        case let .text(string):
-            print("Received text")
-            handleData(string.data(using: .utf8)!)
-        case let .binary(data):
-            print("Received data: \(data.count)")
-            handleData(data)
-        case .ping:
-            print("ping")
-        case .pong:
-            print("pong")
-        case .viabilityChanged:
-            break
-        case .reconnectSuggested:
-            break
-        case .cancelled:
-            isConnected = false
-        case let .error(error):
-            isConnected = false
-            handleError(error)
+extension URLSessionWebSocketTask.Message {
+    private var data: Data {
+        switch self {
+        case let .data(data):
+            return data
+        case let .string(string):
+            return string.data(using: .utf8)!
+        @unknown default:
+            fatalError()
         }
     }
 
-    private func handleError(_ error: Error?) {
-        onError?(error ?? StreamError.unkown)
-    }
-}
-
-public struct CodableStream<E: Decodable> {
-    private var client: CodableStreamClient<E>
-    public init(request: URLRequest) {
-        client = .init(request: request)
-    }
-
-    public var stream: AsyncThrowingStream<E, Error> {
-        .init(E.self, bufferingPolicy: .bufferingNewest(1)) { contination in
-            client.onError = { contination.finish(throwing: $0) }
-            client.onReceive = { contination.yield($0) }
-            client.onComplete = { contination.finish() }
-            client.connect()
-        }
+    func decode<E: Decodable>(_ type: E.Type) throws -> E {
+        try JSONDecoder().decode(E.self, from: data)
     }
 }
 
