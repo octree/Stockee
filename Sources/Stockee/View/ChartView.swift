@@ -281,7 +281,7 @@ open class ChartView<Input: Quote>: StockScrollView {
             contextValue[GroupExtremePointKey(index)] = ep
             context.extremePoint = ep.flatMap {
                 // ⚠️ 如果最大值和最小值一样，则扩大区域，之后需要根据更多情况。例如有没有可能都是 0
-                $0.max - $0.min == 0 ? ($0.min * 0.5, $0.min * 1.5) : $0
+                abs($0.max - $0.min) < .ulpOfOne ? ($0.min * 0.5, $0.min * 1.5) : $0
             } ?? (0, 1)
             group.charts.forEach {
                 $0.render(in: self, context: context)
