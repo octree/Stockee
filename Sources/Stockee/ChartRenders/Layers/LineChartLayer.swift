@@ -42,17 +42,17 @@ public final class LineChartLayer: ShapeLayer {
     }
 
     public func updateWithPoints(points: [CGPoint]) {
-        path = .linesegments(with: points)
+        path = .lineSegments(with: points)
     }
 }
 
 extension LineChartLayer {
     func update<Input: Quote>(with context: RendererContext<Input>,
-                              indictaorValues: ReadonlyOffsetArray<CGFloat>,
+                              indicatorValues: ReadonlyOffsetArray<CGFloat>,
                               color: UIColor)
     {
         update(with: context,
-               indictaorValues: indictaorValues,
+               indicatorValues: indicatorValues,
                keyPath: \.self,
                color: color)
     }
@@ -80,7 +80,7 @@ extension LineChartLayer {
 
 extension LineChartLayer {
     func update<Input: Quote, V>(with context: RendererContext<Input>,
-                                 indictaorValues: ReadonlyOffsetArray<V>,
+                                 indicatorValues: ReadonlyOffsetArray<V>,
                                  keyPath: KeyPath<V, CGFloat>,
                                  color: UIColor)
     {
@@ -91,7 +91,7 @@ extension LineChartLayer {
         guard peak > 0 else { return }
         let start = max(0, context.visibleRange.startIndex - 1)
         let end = min(context.data.count, context.visibleRange.endIndex + 1)
-        let (slice, range) = indictaorValues.sliceAndRange(for: start ..< end)
+        let (slice, range) = indicatorValues.sliceAndRange(for: start ..< end)
         guard slice.count > 0 else { return }
         points = zip(slice, range).map {
             drawingPoint(at: $0.1, value: $0.0[keyPath: keyPath], peak: peak, context: context)
@@ -103,7 +103,7 @@ extension LineChartLayer {
 
 extension LineChartLayer {
     func update<Input: Quote, V>(with context: RendererContext<Input>,
-                                 indictaorValues: ReadonlyOffsetArray<V>,
+                                 indicatorValues: ReadonlyOffsetArray<V>,
                                  keyPath: KeyPath<V, CGFloat?>,
                                  color: UIColor)
     {
@@ -114,7 +114,7 @@ extension LineChartLayer {
         guard peak > 0 else { return }
         let start = max(0, context.visibleRange.startIndex - 1)
         let end = min(context.data.count, context.visibleRange.endIndex + 1)
-        var (slice, range) = indictaorValues.sliceAndRange(for: start ..< end)
+        var (slice, range) = indicatorValues.sliceAndRange(for: start ..< end)
         let index = slice.firstIndex { $0[keyPath: keyPath] != nil } ?? slice.endIndex
         let skipCount = index - slice.startIndex
         slice = slice.dropFirst(skipCount)

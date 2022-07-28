@@ -89,17 +89,17 @@ public class BOLLChart<Input: Quote>: ChartRenderer {
             return
         }
         lowerLayer.update(with: context,
-                          indictaorValues: values,
+                          indicatorValues: values,
                           keyPath: \.lower,
                           color: configuration.lowerColor)
 
         middleLayer.update(with: context,
-                           indictaorValues: values,
+                           indicatorValues: values,
                            keyPath: \.middle,
                            color: configuration.middleColor)
 
         upperLayer.update(with: context,
-                          indictaorValues: values,
+                          indicatorValues: values,
                           keyPath: \.upper,
                           color: configuration.upperColor)
     }

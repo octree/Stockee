@@ -28,7 +28,7 @@ import CoreGraphics
 import Foundation
 
 extension CGPath {
-    static func linesegments(with points: [CGPoint]) -> CGPath {
+    static func lineSegments(with points: [CGPoint]) -> CGPath {
         let path = CGMutablePath()
         guard let first = points.first else { return path }
         path.move(to: first)

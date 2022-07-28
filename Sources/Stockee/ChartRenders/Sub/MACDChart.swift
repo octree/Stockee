@@ -107,11 +107,11 @@ public class MACDChart<Input: Quote>: ChartRenderer {
         diffLayer.lineWidth = context.configuration.lineWidth
         deaLayer.lineWidth = context.configuration.lineWidth
         diffLayer.update(with: context,
-                         indictaorValues: values,
+                         indicatorValues: values,
                          keyPath: \.diff,
                          color: configuration.diffColor)
         deaLayer.update(with: context,
-                        indictaorValues: values,
+                        indicatorValues: values,
                         keyPath: \.dea,
                         color: configuration.deaColor)
         rendererHistogram(context: context, values: values)

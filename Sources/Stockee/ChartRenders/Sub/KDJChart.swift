@@ -91,17 +91,17 @@ public class KDJChart<Input: Quote>: ChartRenderer {
         dLayer.lineWidth = context.configuration.lineWidth
         jLayer.lineWidth = context.configuration.lineWidth
         kLayer.update(with: context,
-                      indictaorValues: values,
+                      indicatorValues: values,
                       keyPath: \.k,
                       color: configuration.kColor)
 
         dLayer.update(with: context,
-                      indictaorValues: values,
+                      indicatorValues: values,
                       keyPath: \.d,
                       color: configuration.dColor)
 
         jLayer.update(with: context,
-                      indictaorValues: values,
+                      indicatorValues: values,
                       keyPath: \.j,
                       color: configuration.jColor)
     }

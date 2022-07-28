@@ -74,7 +74,7 @@ public class RSIChart<Input: Quote>: ChartRenderer {
             return
         }
         layer.lineWidth = context.configuration.lineWidth
-        layer.update(with: context, indictaorValues: values, color: configuration.color)
+        layer.update(with: context, indicatorValues: values, color: configuration.color)
     }
 
     private func clear() {

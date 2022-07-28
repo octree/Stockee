@@ -75,7 +75,7 @@ public class MAChart<Input: Quote>: ChartRenderer {
             return
         }
         layer.update(with: context,
-                     indictaorValues: values,
+                     indicatorValues: values,
                      color: configuration.color)
     }
 
