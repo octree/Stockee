@@ -13,7 +13,7 @@ Highly customizable lightweight k-line chart written in swift.
 
 ## Docs
 [中文文档](./README_CN.md)
-## Sample
+### Sample
 
 Use a declarative syntax to build your k-line chart like `SwiftUI`. It's simpler and easier to read.
 
