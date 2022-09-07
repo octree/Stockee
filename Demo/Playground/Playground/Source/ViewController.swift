@@ -76,9 +76,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // 这里都是配置布局信息的代码
-        chartView.backgroundColor = .secondarySystemBackground
+        view.backgroundColor = .Stockee.background
+        chartView.backgroundColor = .Stockee.background
         chartView.translatesAutoresizingMaskIntoConstraints = false
         chartView.configuration.captionPadding.right = 70
+        chartView.configuration.upColor = .Stockee.green
+        chartView.configuration.downColor = .Stockee.red
+
         view.addSubview(chartView)
         view.addConstraints([
             chartView.topAnchor.constraint(equalTo: lastStackView.safeAreaLayoutGuide.bottomAnchor, constant: 16),
@@ -146,7 +150,7 @@ extension ViewController {
         // 主图，高度为 200， 然后配置默认的 Formatter，用于格式化各种指标
         ChartGroup(height: 200, preferredFormatter: .defaultPrice(), chartPadding: (2, 4)) {
             // 绘制网格
-            GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: UIColor(white: 0.8, alpha: 1))
+            GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: .Stockee.border)
             // 绘制 Y 轴坐标
             YAxisAnnotation()
 
@@ -158,25 +162,29 @@ extension ViewController {
                 CandlestickChart()
                 if chartOptions.contains(.ma) {
                     // 如果包含 ma，则绘制 MA
-                    // MA6
-                    MAChart(configuration: .init(period: 6, color: .systemBrown))
-                    // MA12
-                    MAChart(configuration: .init(period: 12, color: .systemPink))
+                    // MA5
+                    MAChart(configuration: .init(period: 5, color: .Stockee.indicator1))
+                    // MA10
+                    MAChart(configuration: .init(period: 10, color: .Stockee.indicator2))
+                    // MA30
+                    MAChart(configuration: .init(period: 30, color: .Stockee.indicator3))
                 }
                 if chartOptions.contains(.ema) {
                     // EMA
-                    EMAChart(configuration: .init(period: 12, color: .systemTeal))
+                    EMAChart(configuration: .init(period: 5, color: .Stockee.indicator1))
+                    EMAChart(configuration: .init(period: 10, color: .Stockee.indicator2))
+                    EMAChart(configuration: .init(period: 30, color: .Stockee.indicator3))
                 }
                 if chartOptions.contains(.boll) {
                     // BOLL
                     BOLLChart(configuration: .init(period: 12,
-                                                   lowerColor: .green,
-                                                   middleColor: .orange,
-                                                   upperColor: .red))
+                                                   lowerColor: .Stockee.indicator1,
+                                                   middleColor: .Stockee.indicator2,
+                                                   upperColor: .Stockee.indicator3))
                 }
                 if chartOptions.contains(.sar) {
                     // SAR
-                    SARChart(configuration: .init(upColor: .red, downColor: .green, reversalColor: .gray))
+                    SARChart(configuration: .init(upColor: .Stockee.indicator1, downColor: .Stockee.indicator2, reversalColor: .gray))
                 }
                 // 绘制最高最低价格指示器
                 ExtremePriceIndicator(color: .label)
@@ -204,7 +212,7 @@ extension ViewController {
                 // 成交量图表
                 ChartGroup(height: 50, preferredFormatter: .volume) {
                     // 绘制网格
-                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: UIColor(white: 0.8, alpha: 1))
+                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: .Stockee.border)
                     // 同时也要绘制 Y 轴坐标
                     YAxisAnnotation(formatter: .volume)
                     VolumeChart(minHeight: 1)
@@ -215,9 +223,9 @@ extension ViewController {
             if chartOptions.contains(.macd) {
                 // 绘制 macd
                 ChartGroup(height: 50, preferredFormatter: .defaultPrice()) {
-                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: UIColor(white: 0.8, alpha: 1))
+                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: .Stockee.border)
                     YAxisAnnotation(formatter: .maximumSignificantDigits(4))
-                    MACDChart(configuration: .init(diffColor: .purple, deaColor: .systemTeal))
+                    MACDChart(configuration: .init(diffColor: .Stockee.indicator1, deaColor: .Stockee.indicator2))
                     SelectedYIndicator()
                 }
             }
@@ -225,11 +233,11 @@ extension ViewController {
             if chartOptions.contains(.kdj) {
                 // 绘制 kdj
                 ChartGroup(height: 50) {
-                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: UIColor(white: 0.8, alpha: 1))
+                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: .Stockee.border)
                     YAxisAnnotation(formatter: .maximumFractionDigits(1))
-                    KDJChart(configuration: .init(kColor: .orange,
-                                                  dColor: .systemTeal,
-                                                  jColor: .blue))
+                    KDJChart(configuration: .init(kColor: .Stockee.indicator1,
+                                                  dColor: .Stockee.indicator2,
+                                                  jColor: .Stockee.indicator3))
                     SelectedYIndicator()
                 }
             }
@@ -237,11 +245,11 @@ extension ViewController {
             if chartOptions.contains(.rsi) {
                 // 绘制 rsi
                 ChartGroup(height: 50) {
-                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: UIColor(white: 0.8, alpha: 1))
+                    GridIndicator(lineWidth: 1 / UIScreen.main.scale, color: .Stockee.border)
                     YAxisAnnotation(formatter: .maximumFractionDigits(1))
-                    RSIChart(configuration: .init(period: 6, color: .orange))
-                    RSIChart(configuration: .init(period: 12, color: .purple))
-                    RSIChart(configuration: .init(period: 24, color: .brown))
+                    RSIChart(configuration: .init(period: 6, color: .Stockee.indicator1))
+                    RSIChart(configuration: .init(period: 12, color: .Stockee.indicator2))
+                    RSIChart(configuration: .init(period: 24, color: .Stockee.indicator3))
                     SelectedYIndicator()
                 }
             }

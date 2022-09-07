@@ -15,6 +15,7 @@
 		C2116B6727E5B63600B49F78 /* Websocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2116B6627E5B63600B49F78 /* Websocket.swift */; };
 		C2116B6927E5B9B900B49F78 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2116B6827E5B9B900B49F78 /* Model.swift */; };
 		C21AEDE5283343B3006936CF /* Stockee in Frameworks */ = {isa = PBXBuildFile; productRef = C21AEDE4283343B3006936CF /* Stockee */; };
+		C23917AF28C843AE000F2295 /* UIColor+Exentension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23917AE28C843AE000F2295 /* UIColor+Exentension.swift */; };
 		C295081428000481001801F1 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = C295081328000481001801F1 /* Models.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		C202A26F27D99B2100210384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2116B6627E5B63600B49F78 /* Websocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Websocket.swift; sourceTree = "<group>"; };
 		C2116B6827E5B9B900B49F78 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C23917AE28C843AE000F2295 /* UIColor+Exentension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Exentension.swift"; sourceTree = "<group>"; };
 		C26015E427D99DFF00E63536 /* Playground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Playground.entitlements; sourceTree = "<group>"; };
 		C295081328000481001801F1 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +104,7 @@
 				C202A26727D99B2000210384 /* Main.storyboard */,
 				C202A26A27D99B2100210384 /* Assets.xcassets */,
 				C202A26C27D99B2100210384 /* LaunchScreen.storyboard */,
+				C23917AE28C843AE000F2295 /* UIColor+Exentension.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				C202A26627D99B2000210384 /* ViewController.swift in Sources */,
 				C2116B6727E5B63600B49F78 /* Websocket.swift in Sources */,
+				C23917AF28C843AE000F2295 /* UIColor+Exentension.swift in Sources */,
 				C202A26227D99B2000210384 /* AppDelegate.swift in Sources */,
 				C2116B6927E5B9B900B49F78 /* Model.swift in Sources */,
 				C295081428000481001801F1 /* Models.swift in Sources */,
