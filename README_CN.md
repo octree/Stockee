@@ -106,7 +106,6 @@ K 线图
     * 这里展示了一部分配置信息，更完整的可以参考 `ViewController.swift`；
     * 建立每个 `ChartGroup` 可以用一个计算属性进行配置；
     * 然后使用一个计算属性 `descriptor` 来组合这些 `groups`；
-    * 本库是一个绘制图表的通用库，建议单独建一个 `Pod` 机遇这个库实现一个 `Bitmart` 的 K 线图；可以继承 `ChartRenderer` 进行一些自定义的绘制，例如：绘制水印等
     
 5. 数据
     ```swift
