@@ -11,6 +11,12 @@ Highly customizable lightweight k-line chart written in swift.
 - Add https://github.com/octree/Stockee.git
 - Select "Up to Next Major" with "1.0.0"
 
+### Cocoapods
+
+```bash
+pod 'Stockee'
+```
+
 ## Docs
 [中文文档](./README_CN.md)
 ### Sample
