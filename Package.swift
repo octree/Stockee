@@ -1,4 +1,4 @@
-// swift-tools-version:5.6
+// swift-tools-version:5.8
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -6,20 +6,24 @@ import PackageDescription
 let package = Package(
     name: "Stockee",
     platforms: [
-        .iOS(.v13),
+        .iOS(.v13)
     ],
     products: [
         .library(
             name: "Stockee",
-            targets: ["Stockee"]),
+            targets: ["Stockee"]
+        )
     ],
     dependencies: [
     ],
     targets: [
         .target(
             name: "Stockee",
-            dependencies: []),
+            dependencies: []
+        ),
         .testTarget(
             name: "StockeeTests",
-            dependencies: ["Stockee"]),
-    ])
+            dependencies: ["Stockee"]
+        )
+    ]
+)
