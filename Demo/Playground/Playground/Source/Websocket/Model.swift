@@ -25,14 +25,14 @@ extension SocketQuote: Decodable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.start = try container.decode(Int.self, forKey: .start)
-        self.end = try container.decode(Int.self, forKey: .end)
-        self.date = Date(timeIntervalSince1970: CGFloat(start) / 1000)
-        self.low = try Double(container.decode(String.self, forKey: .low))!
-        self.high = try Double(container.decode(String.self, forKey: .high))!
-        self.open = try Double(container.decode(String.self, forKey: .open))!
-        self.close = try Double(container.decode(String.self, forKey: .close))!
-        self.volume = try Double(container.decode(String.self, forKey: .volume))!
+        start = try container.decode(Int.self, forKey: .start)
+        end = try container.decode(Int.self, forKey: .end)
+        date = Date(timeIntervalSince1970: CGFloat(start) / 1000)
+        low = try Double(container.decode(String.self, forKey: .low))!
+        high = try Double(container.decode(String.self, forKey: .high))!
+        open = try Double(container.decode(String.self, forKey: .open))!
+        close = try Double(container.decode(String.self, forKey: .close))!
+        volume = try Double(container.decode(String.self, forKey: .volume))!
     }
 
     var candle: Candle {
@@ -50,6 +50,7 @@ extension SocketQuote: Decodable {
 public struct BNWrapper: Decodable {
     // swiftlint:disable identifier_name
     public var k: SocketQuote
+    // swiftlint:enable identifier_name
 }
 
 public struct BNQuote: Quote {
@@ -66,14 +67,14 @@ public struct BNQuote: Quote {
 extension BNQuote: Decodable {
     public init(from decoder: Decoder) throws {
         var container = try decoder.unkeyedContainer()
-        self.start = try container.decode(Int.self)
-        self.date = Date(timeIntervalSince1970: CGFloat(start) / 1000)
-        self.open = try Double(container.decode(String.self))!
-        self.high = try Double(container.decode(String.self))!
-        self.low = try Double(container.decode(String.self))!
-        self.close = try Double(container.decode(String.self))!
-        self.volume = try Double(container.decode(String.self))!
-        self.end = try container.decode(Int.self)
+        start = try container.decode(Int.self)
+        date = Date(timeIntervalSince1970: CGFloat(start) / 1000)
+        open = try Double(container.decode(String.self))!
+        high = try Double(container.decode(String.self))!
+        low = try Double(container.decode(String.self))!
+        close = try Double(container.decode(String.self))!
+        volume = try Double(container.decode(String.self))!
+        end = try container.decode(Int.self)
     }
 
     var candle: Candle {

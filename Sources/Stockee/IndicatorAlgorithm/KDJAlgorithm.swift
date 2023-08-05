@@ -31,10 +31,9 @@ import Foundation
 public struct KDJIndicator: Equatable {
     // swiftlint:disable identifier_name
     public var k: CGFloat
-    // swiftlint:disable identifier_name
     public var d: CGFloat
-    // swiftlint:disable identifier_name
     public var j: CGFloat
+    // swiftlint:enable identifier_name
 }
 
 /// 用于计算 KDJ 指标的算法
@@ -74,9 +73,11 @@ public struct KDJAlgorithm<Input: Quote>: AnalysisAlgorithm {
             } else {
                 rsv = (data[index].close - low) / (high - low) * 100
             }
+            // swiftlint:disable identifier_name
             let k = 1 / 3 * rsv + 2 / 3 * prev.k
             let d = 1 / 3 * k + 2 / 3 * prev.d
             let j = 3 * k - 2 * d
+            // swiftlint:enable identifier_name
             result.append(.init(k: k, d: d, j: j))
             prev = (k, d)
         }

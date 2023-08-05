@@ -1,6 +1,4 @@
 opt_in_rules:
-  - unused_declaration
-  - unused_import
   - vertical_parameter_alignment_on_call
 
 disabled_rules:
@@ -9,6 +7,14 @@ disabled_rules:
   - nesting
   - block_based_kvo
   - opening_brace
+  - no_fallthrough_only
+  - for_where
+  - unhandled_throwing_task
+  - unneeded_synthesized_initializer
+
+analyzer_rules:
+  - unused_declaration
+  - unused_import
 
 excluded:
   - .build
