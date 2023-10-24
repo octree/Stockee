@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Stockee'
-  s.version          = '1.1.1'
+  s.version          = '1.1.2'
   s.summary          = 'Swift k-line chart'
   s.description      = <<-DESC
   Highly customizable performant k-line chart written in swift.
