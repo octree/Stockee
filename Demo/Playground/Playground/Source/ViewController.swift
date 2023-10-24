@@ -69,9 +69,8 @@ class ViewController: UIViewController {
         }
     }
 
-    private var socket: CodableWebSocket<BNWrapper>?
-
     private var showMA: Bool = true
+    private var task: Task<Void, Error>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +96,7 @@ class ViewController: UIViewController {
         configureChartDescriptor()
 
         requestData()
-        Task {
+        task = Task {
             await observeSocket()
         }
 
@@ -108,6 +107,11 @@ class ViewController: UIViewController {
                 }
             }
         }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        task?.cancel()
     }
 
     @IBAction func chartButtonTapped(_ sender: UIButton) {
@@ -262,22 +266,27 @@ extension ViewController {
 extension ViewController {
     private func resetDatasource() {
         requestData()
-        Task {
+        task?.cancel()
+        task = Task {
             await observeSocket()
         }
     }
 
     private func observeSocket() async {
         let url = "wss://stream.binance.com:9443/ws/\(symbol.lowercased())@kline_\(interval)"
-        let req = URLRequest(url: URL(string: url)!)
-        socket = .init(request: req)
+        let request = URLRequest(url: URL(string: url)!)
         do {
-            for try await wrapper in socket!.stream {
-                handleSocketQuote(wrapper.k)
+            let task = URLSession.shared.webSocketTask(with: request)
+            task.resume()
+            while !Task.isCancelled {
+                let data = try await task.receive().decode(BNWrapper.self)
+                handleSocketQuote(data.k)
             }
+            task.cancel()
         } catch {
             print("🥵", error)
-            Task {
+            task?.cancel()
+            task = Task {
                 await observeSocket()
             }
         }

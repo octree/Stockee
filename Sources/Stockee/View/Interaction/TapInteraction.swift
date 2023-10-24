@@ -27,7 +27,7 @@
 import UIKit
 
 final class TapInteraction: NSObject, UIInteraction {
-    var view: UIView?
+    weak var view: UIView?
     private lazy var gesture: UITapGestureRecognizer = .init(target: self, action: #selector(handleTap(gesture:)))
 
     private var handler: (CGPoint) -> Void

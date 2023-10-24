@@ -27,7 +27,7 @@
 import UIKit
 
 final class SelectionResetInteraction: NSObject, UIInteraction {
-    var view: UIView?
+    weak var view: UIView?
     private var onReset: () -> Void
 
     init(onReset: @escaping () -> Void) {

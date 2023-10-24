@@ -27,7 +27,7 @@
 import UIKit
 
 final class ZoomInteraction: NSObject, UIInteraction {
-    var view: UIView?
+    weak var view: UIView?
     private var preScale: CGFloat = 1.0
     private lazy var gesture: UIPinchGestureRecognizer = .init(target: self, action: #selector(handlePinch(gesture:)))
     private var handler: (UIPinchGestureRecognizer) -> Void
