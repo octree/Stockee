@@ -27,7 +27,7 @@
 import UIKit
 
 final class LongPressInteraction: NSObject, UIInteraction {
-    var view: UIView?
+    weak var view: UIView?
     private lazy var gesture: UILongPressGestureRecognizer = .init(target: self, action: #selector(handleLongPress(gesture:)))
 
     private var binding: Binding<CGPoint>

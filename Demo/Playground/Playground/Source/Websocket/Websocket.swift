@@ -26,29 +26,6 @@
 
 import Foundation
 
-public struct CodableWebSocket<Element: Decodable> {
-    private var request: URLRequest
-    public init(request: URLRequest) {
-        self.request = request
-    }
-
-    var stream: AsyncThrowingStream<Element, Error> {
-        AsyncThrowingStream(Element.self, bufferingPolicy: .bufferingNewest(1)) { continuation in
-            let task = URLSession.shared.webSocketTask(with: request)
-            task.resume()
-            Task.detached {
-                do {
-                    while true {
-                        try await continuation.yield(task.receive().decode(Element.self))
-                    }
-                } catch {
-                    continuation.finish(throwing: error)
-                }
-            }
-        }
-    }
-}
-
 extension URLSessionWebSocketTask.Message {
     private var data: Data {
         switch self {
@@ -70,8 +47,7 @@ enum BinanceAPI {
     static func getKLine(symbol: String,
                          interval: String,
                          endTime: Int? = nil,
-                         limit: Int = 500) async throws -> [Candle]
-    {
+                         limit: Int = 500) async throws -> [Candle] {
         var query = "symbol=\(symbol)&interval=\(interval)&limit=\(limit)"
         if let endTime = endTime {
             query += "&endTime=\(endTime)"
