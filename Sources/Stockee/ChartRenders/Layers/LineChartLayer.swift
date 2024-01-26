@@ -31,8 +31,8 @@ public final class LineChartLayer: ShapeLayer {
         super.init()
         setup()
     }
-    
-    public override init(layer: Any) {
+
+    override public init(layer: Any) {
         guard let layer = layer as? LineChartLayer else {
             fatalError("init(layer:) error: layer: \(layer)")
         }
@@ -60,8 +60,7 @@ public final class LineChartLayer: ShapeLayer {
 extension LineChartLayer {
     func update<Input: Quote>(with context: RendererContext<Input>,
                               indicatorValues: ReadonlyOffsetArray<CGFloat>,
-                              color: UIColor)
-    {
+                              color: UIColor) {
         update(with: context,
                indicatorValues: indicatorValues,
                keyPath: \.self,
@@ -71,8 +70,7 @@ extension LineChartLayer {
     private func drawingPoint<Input: Quote>(at index: Int,
                                             value: CGFloat,
                                             peak: CGFloat,
-                                            context: RendererContext<Input>) -> CGPoint
-    {
+                                            context: RendererContext<Input>) -> CGPoint {
         let barWidth = context.configuration.barWidth
         let spacing = context.configuration.spacing
         let x = (barWidth + spacing) * CGFloat(index) + barWidth / 2
@@ -81,8 +79,7 @@ extension LineChartLayer {
 
     private func yPosition<Input: Quote>(for value: CGFloat,
                                          peak: CGFloat,
-                                         in context: RendererContext<Input>) -> CGFloat
-    {
+                                         in context: RendererContext<Input>) -> CGFloat {
         let height = context.contentRect.height
         let minY = context.contentRect.minY
         return height - height * (value - context.extremePoint.min) / peak + minY
@@ -93,8 +90,7 @@ extension LineChartLayer {
     func update<Input: Quote, V>(with context: RendererContext<Input>,
                                  indicatorValues: ReadonlyOffsetArray<V>,
                                  keyPath: KeyPath<V, CGFloat>,
-                                 color: UIColor)
-    {
+                                 color: UIColor) {
         var points: [CGPoint] = []
         defer { updateWithPoints(points: points) }
         let (minValue, maxValue) = context.extremePoint
@@ -103,7 +99,7 @@ extension LineChartLayer {
         let start = max(0, context.visibleRange.startIndex - 1)
         let end = min(context.data.count, context.visibleRange.endIndex + 1)
         let (slice, range) = indicatorValues.sliceAndRange(for: start ..< end)
-        guard slice.count > 0 else { return }
+        guard !slice.isEmpty else { return }
         points = zip(slice, range).map {
             drawingPoint(at: $0.1, value: $0.0[keyPath: keyPath], peak: peak, context: context)
         }
@@ -116,8 +112,7 @@ extension LineChartLayer {
     func update<Input: Quote, V>(with context: RendererContext<Input>,
                                  indicatorValues: ReadonlyOffsetArray<V>,
                                  keyPath: KeyPath<V, CGFloat?>,
-                                 color: UIColor)
-    {
+                                 color: UIColor) {
         var points: [CGPoint] = []
         defer { updateWithPoints(points: points) }
         let (minValue, maxValue) = context.extremePoint
@@ -130,7 +125,7 @@ extension LineChartLayer {
         let skipCount = index - slice.startIndex
         slice = slice.dropFirst(skipCount)
         range = range.dropFirst(skipCount)
-        guard slice.count > 0 else { return }
+        guard !slice.isEmpty else { return }
         points = zip(slice, range).map {
             drawingPoint(at: $0.1, value: $0.0[keyPath: keyPath]!, peak: peak, context: context)
         }

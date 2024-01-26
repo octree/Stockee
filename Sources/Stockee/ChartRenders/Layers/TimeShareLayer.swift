@@ -46,7 +46,7 @@ final class TimeShareLayer: CALayer {
         super.init()
         configureHierarchy()
     }
-    
+
     override public init(layer: Any) {
         guard let layer = layer as? TimeShareLayer else {
             fatalError("init(layer:) error: layer: \(layer)")
