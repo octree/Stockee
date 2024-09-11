@@ -27,7 +27,7 @@
 import Stockee
 import UIKit
 
-public struct Candle: Quote, Codable {
+public struct Candle: Quote, Codable, Sendable {
     public var date: Date
     public var start: Int = 0
     public var end: Int = 0

@@ -31,7 +31,7 @@ private final class _GradientLayer: CAGradientLayer {
         nil
     }
 
-    override class func defaultAction(forKey event: String) -> CAAction? {
+    override static func defaultAction(forKey event: String) -> CAAction? {
         nil
     }
 }
@@ -114,7 +114,7 @@ final class TimeShareLayer: CALayer {
         nil
     }
 
-    override class func defaultAction(forKey event: String) -> CAAction? {
+    override static func defaultAction(forKey event: String) -> CAAction? {
         nil
     }
 

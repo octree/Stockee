@@ -39,7 +39,6 @@ public enum QuoteContextKey<Input: Quote>: ContextKey {
 /// 用于向 ``ChartRenderer`` 传输一组数据
 public struct ContextValues {
     private var values: [AnyHashable: Any] = [:]
-    // swiftlint: disable implicit_getter
     public subscript<Key: ContextKey>(key: Key.Type) -> Key.Value? {
         get {
             values[ObjectIdentifier(key)] as? Key.Value
@@ -61,8 +60,6 @@ public struct ContextValues {
             values[key] = temp
         }
     }
-
-    // swiftlint: enable implicit_getter
 
     subscript(id: AnyHashable) -> Any? {
         _read {

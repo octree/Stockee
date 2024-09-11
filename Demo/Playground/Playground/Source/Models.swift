@@ -26,18 +26,18 @@
 
 import Foundation
 
-public struct ChartOption: OptionSet {
+public struct ChartOption: OptionSet, Equatable, Sendable {
     public typealias RawValue = UInt
     public var rawValue: UInt
 
-    public static var ma: ChartOption = .init(rawValue: 1 << 0)
-    public static var ema: ChartOption = .init(rawValue: 1 << 1)
-    public static var boll: ChartOption = .init(rawValue: 1 << 2)
-    public static var sar: ChartOption = .init(rawValue: 1 << 3)
-    public static var vol: ChartOption = .init(rawValue: 1 << 4)
-    public static var kdj: ChartOption = .init(rawValue: 1 << 5)
-    public static var rsi: ChartOption = .init(rawValue: 1 << 6)
-    public static var macd: ChartOption = .init(rawValue: 1 << 7)
+    public nonisolated(unsafe) static var ma: ChartOption = .init(rawValue: 1 << 0)
+    public nonisolated(unsafe) static var ema: ChartOption = .init(rawValue: 1 << 1)
+    public nonisolated(unsafe) static var boll: ChartOption = .init(rawValue: 1 << 2)
+    public nonisolated(unsafe) static var sar: ChartOption = .init(rawValue: 1 << 3)
+    public nonisolated(unsafe) static var vol: ChartOption = .init(rawValue: 1 << 4)
+    public nonisolated(unsafe) static var kdj: ChartOption = .init(rawValue: 1 << 5)
+    public nonisolated(unsafe) static var rsi: ChartOption = .init(rawValue: 1 << 6)
+    public nonisolated(unsafe) static var macd: ChartOption = .init(rawValue: 1 << 7)
 
     public init(rawValue: UInt) {
         self.rawValue = rawValue
