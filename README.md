@@ -9,7 +9,7 @@ Highly customizable lightweight k-line chart written in swift.
 
 - File > Swift Packages > Add Package Dependency
 - Add https://github.com/octree/Stockee.git
-- Select "Up to Next Major" with "1.0.0"
+- Select "Up to Next Major" with "1.3.1"
 
 ### Cocoapods
 
