@@ -27,6 +27,7 @@
 import UIKit
 
 /// 用于计算每个 Bar 横向位置的类
+@MainActor
 public struct QuoteLayout<Input: Quote> {
     unowned var view: ChartView<Input>
     private var configuration: Configuration { view.scaledConfiguration }

@@ -29,6 +29,7 @@ import UIKit
 /// 图标渲染器
 /// 该类型只能是一个 class，CharView 会根据引用地址进行 diff，
 /// 从而决定要增加加载、卸载哪些图表
+@MainActor
 public protocol ChartRenderer: AnyObject {
     associatedtype Input
     associatedtype QuoteProcessor: QuoteProcessing where QuoteProcessor.Input == Input
@@ -63,6 +64,7 @@ public extension ChartRenderer {
     }
 }
 
+@MainActor
 public struct AnyChartRenderer<Input: Quote> {
     var processor: AnyQuoteProcessor<Input>?
     var _setup: (ChartView<Input>) -> Void
@@ -109,13 +111,13 @@ public struct AnyChartRenderer<Input: Quote> {
     }
 }
 
-extension AnyChartRenderer: Equatable {
+extension AnyChartRenderer: @preconcurrency Equatable {
     public static func == (lhs: AnyChartRenderer<Input>, rhs: AnyChartRenderer<Input>) -> Bool {
         lhs.base === rhs.base
     }
 }
 
-extension AnyChartRenderer: Hashable {
+extension AnyChartRenderer: @preconcurrency Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(base))
     }

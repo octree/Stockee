@@ -27,6 +27,7 @@
 import Foundation
 
 @resultBuilder
+@MainActor
 public enum ChartRendererBuilder<I: Quote> {
     public static func buildExpression<R: ChartRenderer>(_ expression: R) -> [AnyChartRenderer<I>] where R.Input == I {
         [AnyChartRenderer(expression)]

@@ -29,18 +29,22 @@ import UIKit
 /*
  * 用于像素对齐，防止发生复杂的颜色混合
  */
+@MainActor
 @inlinable func _pixelCeil(_ value: CGFloat) -> CGFloat {
     ceil(value * max(1, UIScreen.main.scale)) / max(1, UIScreen.main.scale)
 }
 
 public extension CGPoint {
+    @MainActor
     @inlinable var pixelCeiled: CGPoint { .init(x: _pixelCeil(x), y: _pixelCeil(y)) }
 }
 
 public extension CGSize {
+    @MainActor
     @inlinable var pixelCeiled: CGSize { .init(width: _pixelCeil(width), height: _pixelCeil(height)) }
 }
 
 public extension CGRect {
+    @MainActor
     @inlinable var pixelCeiled: CGRect { .init(origin: origin.pixelCeiled, size: size.pixelCeiled) }
 }

@@ -139,11 +139,11 @@ final class CaptionView: UIView {
 extension CaptionView {
     private func setupLabels(count: Int) {
         if visibleLabels.count > count {
-            for _ in count..<visibleLabels.count {
+            for _ in count ..< visibleLabels.count {
                 enqueueReusableLabel(visibleLabels.removeLast())
             }
         } else {
-            for _ in visibleLabels.count..<count {
+            for _ in visibleLabels.count ..< count {
                 dequeueReusableLabel()
             }
         }
@@ -170,6 +170,7 @@ extension CaptionView {
     }
 }
 
+@MainActor
 struct HorizontalLayoutContext {
     var origin: CGPoint
     var availableSize: CGSize
@@ -180,8 +181,7 @@ struct HorizontalLayoutContext {
 
     init(origin: CGPoint,
          availableSize: CGSize,
-         spacing: CGFloat)
-    {
+         spacing: CGFloat) {
         self.origin = origin
         self.availableSize = availableSize
         self.spacing = spacing

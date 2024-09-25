@@ -48,6 +48,7 @@ final class GridLayer: ShapeLayer {
 }
 
 extension GridLayer {
+    @MainActor
     func draw<T: Quote>(in context: RendererContext<T>) {
         let width = context.layout.view.frame.width
         let height = context.groupContentRect.height

@@ -68,8 +68,8 @@ extension NumberFormatter: NumberFormatting {
 }
 
 /// 默认的用来格式化交易量的 Formatter
-public struct DefaultVolumeFormatter: NumberFormatting {
-    private static var units = ["K", "M", "B", "T"]
+public struct DefaultVolumeFormatter: NumberFormatting, Sendable {
+    private static let units = ["K", "M", "B", "T"]
     public func format(_ value: CGFloat) -> String {
         var unit = ""
         var value = value

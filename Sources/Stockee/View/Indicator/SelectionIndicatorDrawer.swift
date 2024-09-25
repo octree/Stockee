@@ -27,6 +27,7 @@
 import UIKit
 
 /// 用户长按选择时的十字线指示器
+@MainActor
 class SelectionIndicatorDrawer<Input: Quote> {
     private var lineLayer: ShapeLayer = .init()
     private var pointLayer: ShapeLayer = .init()
@@ -58,8 +59,7 @@ class SelectionIndicatorDrawer<Input: Quote> {
     func draw(in view: ChartView<Input>,
               position: CGPoint,
               style: Style,
-              showHorizontal: Bool)
-    {
+              showHorizontal: Bool) {
         let x: CGFloat = view.contentOffset.x
         let width = view.frame.width
         let height = view.frame.height

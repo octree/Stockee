@@ -76,6 +76,7 @@ final class TimeShareLayer: CALayer {
 
     // MARK: - Public
 
+    @MainActor
     func update<Q: Quote>(with context: RendererContext<Q>) {
         guard !context.visibleRange.isEmpty else { return }
         let start = max(0, context.visibleRange.startIndex - 1)
